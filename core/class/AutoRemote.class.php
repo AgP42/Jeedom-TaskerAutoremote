@@ -112,8 +112,10 @@ class AutoRemoteCmd extends cmd {
         $cmd_logical = $this->getLogicalId();
 
         $message = rawurlencode($_options['message']);
-        $message = str_replace("%26", "&", $message);
-        $message = str_replace("%3D", "=", $message);
+        // $message = str_replace("%26", "&", $message);
+        // $message = str_replace("%3D", "=", $message);
+        // $message = str_replace("%27", "'", $message);
+        // $message = str_replace("%22", "", $message);
 
         if( $cmd_logical == 'message'){
 
