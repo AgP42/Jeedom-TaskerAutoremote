@@ -1,0 +1,35 @@
+{
+    "plugins\/AutoRemote\/plugin_info\/info.xml": {
+        "Plugin pour envoyer des messages et notifications vers votre équipement AutoRemote": "Plugin pour envoyer des messages et notifications vers votre équipement AutoRemote",
+        "Aucune": "Aucune"
+    },
+    "plugins\/AutoRemote\/desktop\/php\/AutoRemote.php": {
+        "Ajouter un client": "Ajouter un client",
+        "Rechercher": "Rechercher",
+        "Général": "Général",
+        "Nom": "Nom",
+        "Nom de l'équipement AutoRemote": "Nom de l'équipement AutoRemote",
+        "Objet parent": "Objet parent",
+        "Aucun": "Aucun",
+        "Catégorie": "Catégorie",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "AutoRemote": "AutoRemote",
+        "key": "key",
+        "Supprimer": "Supprimer",
+        "Sauvegarder": "Sauvegarder",
+        "Clé AutoRemote": "Clé AutoRemote",
+        "Clé api d'AutoRemote": "Clé api d'AutoRemote",
+        "Liste des commandes": "Liste des commandes",
+        "Type": "Type"
+    },
+    "plugins\/AutoRemote\/desktop\/js\/AutoRemote.js": {
+        "Tester": "Tester"
+    },
+    "plugins\/AutoRemote\/core\/class\/AutoRemote.class.php": {
+        "Envoyer notification": "Envoyer notification",
+        "Envoyer message": "Envoyer message",
+        "Message": "Message",
+        "Le champs clé ne peut être vide": "Le champs clé ne peut être vide"
+    }
+}

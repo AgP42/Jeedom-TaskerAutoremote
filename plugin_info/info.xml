@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>AutoRemote</id>
+    <name>AutoRemote</name>
+    <description>Plugin pour envoyer des messages et notifications vers votre équipement AutoRemote</description>
+    <icon>fa fa-mobile</icon>
+    <licence>AGPL</licence>
+    <author>Hydro</author>
+    <installation>Aucune</installation>
+    <require>1.200</require>
+    <version>2.10</version>
+    <category>communication</category>
+</info>
+

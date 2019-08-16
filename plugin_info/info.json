@@ -1,0 +1,11 @@
+{
+	"id" : "AutoRemote",
+	"name" : "AutoRemote",
+	"licence" : "AGPL",
+	"author" : "Hydro",
+	"require" : "2.0",
+	"category" : "communication",
+	"hasDependency" : false,
+	"hasOwnDeamon" : false,
+	"maxDependancyInstallTime" : 0
+}
