@@ -107,9 +107,17 @@ class AutoRemoteCmd extends cmd {
 //        }
 
         $autoremote = $this->getEqLogic();
-        $key = $autoremote->getConfiguration('key');
-        $target = $autoremote->getConfiguration('target');
         $cmd_logical = $this->getLogicalId();
+
+        $key = $autoremote->getConfiguration('key');
+
+        $target = $autoremote->getConfiguration('target');
+
+        $sound = $autoremote->getConfiguration('sound');
+        $status_bar_icon = $autoremote->getConfiguration('status_bar_icon');
+        $url_on_tap = $autoremote->getConfiguration('url_on_tap');
+        $action_on_tap = $autoremote->getConfiguration('action_on_tap');
+        $action_on_receive = $autoremote->getConfiguration('action_on_receive');
 
         $message = rawurlencode($_options['message']);
         // $message = str_replace("%26", "&", $message);
@@ -129,10 +137,10 @@ class AutoRemoteCmd extends cmd {
         }else{
 
             $title = rawurlencode($_options['title']);
-            $title = str_replace("%26", "&", $title);
-            $title = str_replace("%3D", "=", $title);
+            // $title = str_replace("%26", "&", $title);
+            // $title = str_replace("%3D", "=", $title);
 
-            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message;
+            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message . '&sound=' . $sound . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&statusbaricon=' . $status_bar_icon;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
             $ch = curl_init($url);
             curl_exec($ch);
