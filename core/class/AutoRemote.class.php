@@ -19,23 +19,28 @@
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
-define('AUTOREMOTEADDR', 'https://autoremotejoaomgcd.appspot.com/sendmessage');
-define('AUTOREMOTEADDR2', '');
+define('AUTOREMOTEADDRMSG', 'https://autoremotejoaomgcd.appspot.com/sendmessage');
+define('AUTOREMOTEADDRNOTIF', 'https://autoremotejoaomgcd.appspot.com/sendnotification');
 
 class AutoRemote extends eqLogic {
-    
-        public function preUpdate() {
 
-            if ($this->getConfiguration('key') == '') {
-                throw new Exception(__('Le champs clé ne peut être vide',__FILE__));
-            }
+  public function preUpdate() {
 
-        }    
-    
-    	public function postSave() {
-        
-        $notification = $this->getCmd(null, 'notification');
-		if (!is_object($notification)) {
+      if ($this->getConfiguration('key') == '') {
+          throw new Exception(__('Le champs clé ne peut être vide',__FILE__));
+      }
+
+      if ($this->getConfiguration('target') == '') {
+        $this->setConfiguration('target', "");
+      }
+
+  }
+
+  public function postSave() {
+
+    $notification = $this->getCmd(null, 'notification');
+
+    if (!is_object($notification)) {
 			$notification = new AutoRemoteCmd();
 			$notification->setLogicalId('notification');
 			$notification->setIsVisible(1);
@@ -46,8 +51,8 @@ class AutoRemote extends eqLogic {
 		$notification->setEventOnly(1);
 		$notification->setEqLogic_id($this->getId());
 		$notification->save();
-            
-        $message = $this->getCmd(null, 'message');
+
+    $message = $this->getCmd(null, 'message');
 		if (!is_object($message)) {
 			$message = new AutoRemoteCmd();
 			$message->setLogicalId('message');
@@ -56,12 +61,12 @@ class AutoRemote extends eqLogic {
 		}
 		$message->setType('action');
 		$message->setSubType('message');
-        $message->setDisplay('title_disable', 1);
-        $message->setDisplay('message_placeholder', __('Message', __FILE__));
+    $message->setDisplay('title_disable', 1);
+    $message->setDisplay('message_placeholder', __('Message', __FILE__));
 		$message->setEventOnly(1);
 		$message->setEqLogic_id($this->getId());
 		$message->save();
-        
+
     }
 }
 
@@ -84,11 +89,11 @@ class AutoRemoteCmd extends cmd {
 //        if ($_options['message'] == '') {
 //            throw new Exception(__('Le message ne peut être vide', __FILE__));
 //        }
-//        
+//
 //        $_options['message'] = rawurlencode($_options['message']);
 //        $_options['message'] = str_replace("%26", "&", $_options['message']);
-//        $_options['message'] = str_replace("%3D", "=", $_options['message']); 
-//        
+//        $_options['message'] = str_replace("%3D", "=", $_options['message']);
+//
 //        if ($_options['title'] == '') {
 //        $url = AUTOREMOTEADDR . '?key=' . trim($this->getConfiguration('key')) . '&message=' . $_options['message'];
 //        $ch = curl_init($url);
@@ -99,36 +104,38 @@ class AutoRemoteCmd extends cmd {
 //        $ch = curl_init($url);
 //        curl_exec($ch);
 //        curl_close($ch);
-//        } 
-                        
+//        }
+
         $autoremote = $this->getEqLogic();
         $key = $autoremote->getConfiguration('key');
+        $target = $autoremote->getConfiguration('target');
         $cmd_logical = $this->getLogicalId();
-            
+
         $message = rawurlencode($_options['message']);
         $message = str_replace("%26", "&", $message);
         $message = str_replace("%3D", "=", $message);
-        
+
         if( $cmd_logical == 'message'){
 
-            $url ='https://autoremotejoaomgcd.appspot.com/sendmessage?key=' . trim($key) .  '&message=' . $message;
+            // $url ='https://autoremotejoaomgcd.appspot.com/sendmessage?key=' . trim($key) .  '&message=' . $message;
+            $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target;
             log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
             $ch = curl_init($url);
             curl_exec($ch);
             curl_close($ch);
-            
+
         }else{
-            
+
             $title = rawurlencode($_options['title']);
             $title = str_replace("%26", "&", $title);
-            $title = str_replace("%3D", "=", $title);  
-            
-            $url ='https://autoremotejoaomgcd.appspot.com/sendnotification?key=' . trim($key) .  '&title=' . $title . '&text=' . $message;
+            $title = str_replace("%3D", "=", $title);
+
+            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
             $ch = curl_init($url);
             curl_exec($ch);
             curl_close($ch);
-            
+
         }
     }
 
