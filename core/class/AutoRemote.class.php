@@ -16,26 +16,64 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* Update aout 2019 par AgP42 - Jeedom 3.3.29 */
+
 /* * ***************************Includes********************************* */
-require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 define('AUTOREMOTEADDRMSG', 'https://autoremotejoaomgcd.appspot.com/sendmessage');
 define('AUTOREMOTEADDRNOTIF', 'https://autoremotejoaomgcd.appspot.com/sendnotification');
 
 class AutoRemote extends eqLogic {
+  /*     * *************************Attributs****************************** */
 
-  public function preUpdate() {
 
-      if ($this->getConfiguration('key') == '') {
-          throw new Exception(__('Le champs clé ne peut être vide',__FILE__));
-      }
 
-      if ($this->getConfiguration('target') == '') {
-        $this->setConfiguration('target', "");
-      }
+  /*     * ***********************Methode static*************************** */
+
+  /*
+   * Fonction exécutée automatiquement toutes les minutes par Jeedom
+    public static function cron() {
+
+    }
+   */
+
+
+  /*
+   * Fonction exécutée automatiquement toutes les heures par Jeedom
+    public static function cronHourly() {
+
+    }
+   */
+
+  /*
+   * Fonction exécutée automatiquement tous les jours par Jeedom
+    public static function cronDaily() {
+
+    }
+   */
+
+  /*     * *********************Méthodes d'instance************************* */
+
+  /*
+  // preInsert ⇒ Méthode appellée avant la création de votre objet
+  public function preInsert() {
 
   }
 
+  // postInsert ⇒ Méthode appellée après la création de votre objet
+  public function postInsert() {
+
+  }
+
+  // preSave ⇒ Méthode appellée avant la sauvegarde (creation et mise à jour donc) de votre objet
+  public function preSave() {
+
+  }
+  */
+
+  // postSave ⇒ Méthode appellée après la sauvegarde de votre objet
+  // ici on va créer les 2 commandes
   public function postSave() {
 
     $notification = $this->getCmd(null, 'notification');
@@ -68,6 +106,55 @@ class AutoRemote extends eqLogic {
 		$message->save();
 
     }
+
+  // preUpdate ⇒ Méthode appellée avant la mise à jour de votre objet
+  // ici on vérifie la présence de nos champs de config obligatoire
+  public function preUpdate() {
+
+      if ($this->getConfiguration('key') == '') {
+          throw new Exception(__('Le champs clé ne peut être vide',__FILE__));
+      }
+
+  }
+
+  /*
+  // postUpdate ⇒ Méthode appellée après la mise à jour de votre objet
+  public function postUpdate() {
+
+  }
+
+  // preRemove ⇒ Méthode appellée avant la supression de votre objet
+  public function preRemove() {
+
+  }
+
+  // postRemove ⇒ Méthode appellée après la supression de votre objet
+  public function postRemove() {
+
+  }
+  */
+
+  /*
+   * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
+    public function toHtml($_version = 'dashboard') {
+
+    }
+   */
+
+  /*
+   * Non obligatoire mais ca permet de déclencher une action après modification de variable de configuration
+  public static function postConfig_<Variable>() {
+  }
+   */
+
+  /*
+   * Non obligatoire mais ca permet de déclencher une action avant modification de variable de configuration
+  public static function preConfig_<Variable>() {
+  }
+   */
+
+  /*     * **********************Getteur Setteur*************************** */
+
 }
 
 class AutoRemoteCmd extends cmd {
@@ -79,32 +166,14 @@ class AutoRemoteCmd extends cmd {
 
     /*     * *********************Methode d'instance************************* */
 
-    public function preSave() {
-    }
+    /*
+     * Non obligatoire permet de demander de ne pas supprimer les commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
+      public function dontRemoveCmd() {
+      return true;
+      }
+     */
 
     public function execute($_options = null) {
-//        if ($_options === null) {
-//            throw new Exception(__('Les options de la fonction ne peuvent etre null', __FILE__));
-//        }
-//        if ($_options['message'] == '') {
-//            throw new Exception(__('Le message ne peut être vide', __FILE__));
-//        }
-//
-//        $_options['message'] = rawurlencode($_options['message']);
-//        $_options['message'] = str_replace("%26", "&", $_options['message']);
-//        $_options['message'] = str_replace("%3D", "=", $_options['message']);
-//
-//        if ($_options['title'] == '') {
-//        $url = AUTOREMOTEADDR . '?key=' . trim($this->getConfiguration('key')) . '&message=' . $_options['message'];
-//        $ch = curl_init($url);
-//        curl_exec($ch);
-//        curl_close($ch);
-//        }else{
-//        $url = AUTOREMOTEADDR2 . '?key=' . trim($this->getConfiguration('key')) .  '&title=' . $_options['title'] . $_options['message'];
-//        $ch = curl_init($url);
-//        curl_exec($ch);
-//        curl_close($ch);
-//        }
 
         $autoremote = $this->getEqLogic();
         $cmd_logical = $this->getLogicalId();
