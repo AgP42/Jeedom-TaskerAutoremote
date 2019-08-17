@@ -128,33 +128,63 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
       <div role="tabpanel" class="tab-pane" id="msgoptiontab">
         </br>
+        <p>{{Tous les paramétres ci-dessous sont optionnels}}</p>
         <form class="form-horizontal">
+          <legend>Option</legend>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Cible (optionnel)}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="target" />
             </div>
-            <span class="descpapp"> Permet au receveur de filtrer les messages selon la cible sans avoir besoin d'analyser le message en lui-même.</span>
+            <span class="descpapp">{{Permet au receveur de filtrer les messages selon la cible sans avoir besoin d'analyser le message en lui-même.}}</span>
           </div>
         </form>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="notifoptiontab">
         </br>
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{Cible (optionnel)}}</label>
-            <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="todo1" placeholder="{{Cible (optionnel)}}" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label">{{Nom de l'émetteur (optionnel)}}</label>
-            <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="todo2" placeholder="{{Nom de l'émetteur (optionnel)}}" />
-            </div>
-          </div>
+        <p>{{Tous les paramétres ci-dessous sont optionnels}}</p>
 
+        <form class="form-horizontal">
+          <legend>Apparence</legend>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Son de notification}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="sound" />
+            </div>
+            <span class="descpapp">{{Value of 1 to 10. One of the 10 notification sounds chosen in AutoRemote's settings.}}</span>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Icone de la notification}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="status_bar_icon" />
+            </div>
+            <span class="descpapp">{{Status Bar Icon - In the Android app, go to the AutoRemote Notification action in Tasker and click the Status Bar Icon field. There you can see the possible values for this field.}}</span>
+          </div>
+          <legend>Action on tap</legend>
+          <p>{{Choisir l'un ou l'autre, "Action" sera prioritaire}}</p>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{URL on tap}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+            </div>
+            <span class="descpapp">{{This Url will be opened when you touch the Notification body. The "Action" field will override this. Do not forget the "http://"}}</span>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action on tap}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+            </div>
+            <span class="descpapp">{{AutoRemote action (can be in the param1 param2=:=command format) that will be executed on Notification touch}}</span>
+          </div>
+          <legend>Action à la reception</legend>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action on receive}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_receive" />
+            </div>
+            <span class="descpapp">{{AutoRemote action (can be in the param1 param2=:=command format) that will automatically execute when receiving this notification}}</span>
+          </div>
         </form>
       </div>
 
