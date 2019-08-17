@@ -1,7 +1,7 @@
 Présentation
 ============
 
-Ce plugin vous permet de communiquer avec votre téléphone Android via le service AutoRemote (ou autre équipement compatible).
+Ce plugin vous permet de communiquer avec votre téléphone Android (ou autre équipement compatible) via le service AutoRemote.
 
 Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des actions sur votre équipement distant (grâce à Tasker) ou vous pourrez directement envoyer une notification complètement personnalisée.
 
@@ -19,21 +19,26 @@ Une fois le plugin activé, il est visible dans le menu "plugin"/"communication"
 
 Vous pouvez alors définir plusieurs "clients Autoremote".
 
+Chaque client doit avoir une clef API définie, permettant de cibler l'appareil de réception.
+
+Chaque client contient aussi ses options pour "Envoyer un message" ou "Envoyer une notification" qui sont propre à chacun.
+
 Onglet Equipement
 -----------------
 
-Chaque client doit avoir une clef API définie, permettant de cibler l'appareil de réception.
-Chaque client contient aussi ses options pour "Envoyer un message" ou "envoyer une notification" qui sont propre au client.
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Equipement.png)
 
-Pour trouver la clef il vous suffit de naviguer vers l'URL donné par AutoRemote sur votre équipement Android.
+Pour trouver la clef API il vous suffit de naviguer vers l'URL donné par AutoRemote sur votre équipement Android.
 
 Il est possible d'utiliser la même clef sur plusieurs clients.
 
-Par exemple vous pouvez définir un client vers votre téléphone avec les options "URL on tap" pour ouvrir votre Jeedom au clique sur la notification reçue et un autre client vers le même téléphone avec l'option "Action on tap" permettant de supprimer les messages de Jeedom (voir ci-dessous). A l'usage, choisissez le client dont les options correspondent à votre besoin.
+Par exemple vous pouvez définir un client vers votre téléphone avec les options "URL après un clic" pour ouvrir votre Jeedom au clique sur la notification reçue et un autre client vers le même téléphone avec l'option "Action après un clic" permettant de supprimer les messages de Jeedom (voir ci-dessous). A l'usage, choisissez le client dont les options correspondent à votre besoin.
+
 Vous pouvez aussi définir plusieurs clients selon le son ou l'icône voulue sur la notification.
 
 Onglet Commandes
 -----------------
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Commandes.png)
 
 Les commandes sont automatiquement créées à la sauvegarde de l'équipement.
 
@@ -45,6 +50,7 @@ Il est possible de tester ces commandes avec le bouton "tester", attention, le r
 
 Onglet Options des messages
 --------------------------
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Opt_msg.png)
 
 Il s'agit des options pour la commande "Envoyer un message" uniquement.
 
@@ -52,6 +58,7 @@ Le champ "cible" permet de définir le champ "Target" d'AutoRemote qui permet au
 
 Onglet Options des notifications
 --------------------------------
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif.png)
 
 Il s'agit des options pour la commande "Envoyer une notification" uniquement.
 
@@ -64,14 +71,18 @@ Apparence :
    - "eye" : un oeil
    - "ic_action_dialog" : logo "chat"
 
-Action on tap :
-Il s'agit de choisir l'action qui sera réalisée lors de l'appui sur la notification reçue : ouvrir un url, ou lancer une action Tasker. Pour l'action Tasker, il s'agit en fait du champs "message" doit doit donc être "écouté" par Tasker pour lancer une action. Voir dans Tasker les événements "AutoRemote"
+Action après un clic :
+
+Il s'agit de choisir l'action qui sera réalisée lors de l'appui sur la notification reçue : ouvrir un url, ou lancer une action Tasker.
+
+Pour l'action Tasker, il s'agit en fait du champs "message" qui doit donc être "écouté" par Tasker pour lancer une action. Voir dans Tasker les événements "AutoRemote". (Voir exemple ci-dessous)
 
 Si l'URL et Action sont remplies, "Action" sera prioritaire.
 
 Action à la réception :
+
 Il s'agit d'une action Tasker qui sera exécutée dès la réception de la notification.
-La configuration au niveau du récepteur est la même que pour "Action on tap".
+La configuration au niveau du récepteur est la même que pour "Action après un clic".
 
 Exemples d'utilisation
 ======================
@@ -99,10 +110,16 @@ Les messages Jeedom avertissement des erreurs d'exécution ou de mises à jour d
    - dans le champ de l'action, sélectionner votre client AutoRemote et choisir "Envoyer une notification"
    - personnaliser votre message, par exemple : titre : "Maison - Message de #plugin#" et message : "#jour# #smois# #annee# - formatTime(#time#) : #message#"
    - sauvegarder
-Avec ceci vous recevrez une notification "standard" d'AutoRemote contenant uniquement le titre et le message. Personnalisons-la un peu ! :
+
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/message_logs.png)
+
+Avec ceci vous recevrez une notification "standard" d'AutoRemote contenant uniquement le titre et le message. 
+
+Personnalisons-la un peu ! :
+
 3. Retourner dans le plugin AutoRemote, choisir le client précédemment créé puis aller dans l'onglet "Options des notifications" :
    - Choisir une nouvelle icône et le son voulu
-   - "URL on tap" : saisir l'URL de votre jeedom pour y accéder au clique sur la notification reçue
+   - "URL après un clic" : saisir l'URL de votre jeedom pour y accéder au clique sur la notification reçue
 
 Et si je veux purger les messages jeedom en cliquant sur la notification ?
 
@@ -110,7 +127,7 @@ Et si je veux purger les messages jeedom en cliquant sur la notification ?
 -------------------------------------------------------
 
 Dans Jeedom :
-1. Dans la configuration du plugin AutoRemote, dans le champ "Action on tap", saisir "purgeMsg" (ou autre chose tant que ça reste cohérent par la suite). Remarque : idem avec "Action on receive" si vous voulez que ca s'exécute à la réception de la notification et non pas au clique dessus.
+1. Dans la configuration du plugin AutoRemote, dans le champ "Action après un clic", saisir "purgeMsg" (ou autre chose tant que ça reste cohérent par la suite). Remarque : idem avec "Action à la réception" si vous voulez que ca s'exécute à la réception de la notification et non pas au clique dessus.
 2. Créer un scenario en mode provoqué. Ajouter un bloc de "code" dans lequel vous écrivez "message::removeAll();". Sauvegarder. Noter l'ID du scénario (dans le titre de l'onglet "Général")
 
 Sur votre Android :
