@@ -3,17 +3,17 @@
 	"name" : "AutoRemote",
 	"description" : "Plugin pour envoyer des messages et notification AutoRemote",
 	"licence" : "AGPL",
-	"author" : "Hydro + AgP42",
+	"author" : "AgP42",
 	"require" : "3.2",
 	"category" : "communication",
 	"hasDependency" : false,
 	"hasOwnDeamon" : false,
 	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://github.com/AgP42/Jeedom-AutoRemote/",
-	"documentation" : "https://github.com/AgP42/Jeedom-AutoRemote/upload/master",
+	"changelog" : "https://github.com/AgP42/Jeedom-AutoRemote/blob/master/docs/fr_FR/changelog.md",
+	"documentation" : "https://github.com/AgP42/Jeedom-AutoRemote/blob/master/docs/fr_FR/index.md",
 	"link" : {
 		"forum":"https://www.jeedom.com/forum/viewtopic.php?f=140&t=10400&start=120"
 	},
-	"language" : ["fr_FR","en_US","de_DE","es_ES","ru_RU","id_ID","it_IT"],
+	"language" : ["fr_FR"],
 	"compatibility" : ["miniplus","smart","rpi","docker","diy"]
 }
