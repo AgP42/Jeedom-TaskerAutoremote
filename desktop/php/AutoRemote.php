@@ -152,38 +152,38 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="sound" />
             </div>
-            <span class="descpapp">{{Value of 1 to 10. One of the 10 notification sounds chosen in AutoRemote's settings.}}</span>
+            <span class="descpapp">{{Valeur de 1 à 10. Correspond à l'un des 10 sons de notification choisis dans l'application Android.}}</span>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Icone de la notification}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="status_bar_icon" />
             </div>
-            <span class="descpapp">{{Status Bar Icon - In the Android app, go to the AutoRemote Notification action in Tasker and click the Status Bar Icon field. There you can see the possible values for this field.}}</span>
+            <span class="descpapp">{{Status Bar Icon - Dans l'application Tasker (Android), allez dans l'action "AutoRemote Notification et cliquez sur le champ "Status Bar Icon". Vous y trouverez les valeurs possibles pour cette zone. Ex: "eye" ou "edit"}}</span>
           </div>
-          <legend>Action on tap</legend>
+          <legend>Action après un clic</legend>
           <p>{{Choisir l'un ou l'autre, "Action" sera prioritaire}}</p>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{URL on tap}}</label>
+            <label class="col-sm-3 control-label">{{URL après un clic}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
             </div>
-            <span class="descpapp">{{This Url will be opened when you touch the Notification body. The "Action" field will override this. Do not forget the "http://"}}</span>
+            <span class="descpapp">{{URL à ouvrir au clique sur la notification. Ce champ n'est pas pris en compte si "Action" si-dessous est rempli. Ne pas oublier le "http://"}}</span>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Action on tap}}</label>
+            <label class="col-sm-3 control-label">{{Action après un clic}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
             </div>
-            <span class="descpapp">{{AutoRemote action (can be in the param1 param2=:=command format) that will be executed on Notification touch}}</span>
+            <span class="descpapp">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple complet.}}</span>
           </div>
           <legend>Action à la reception</legend>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Action on receive}}</label>
+            <label class="col-sm-3 control-label">{{Action à la réception}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_receive" />
             </div>
-            <span class="descpapp">{{AutoRemote action (can be in the param1 param2=:=command format) that will automatically execute when receiving this notification}}</span>
+            <span class="descpapp">{{Action AutoRemote (nécessite Tasker) à executer dès la reception de la notification. Voir la documentation pour un exemple complet.}}</span>
           </div>
         </form>
       </div>
