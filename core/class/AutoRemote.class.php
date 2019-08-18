@@ -60,21 +60,10 @@ class AutoRemote extends eqLogic {
   public function preInsert() {
 
   }
-
+  */
   // postInsert ⇒ Méthode appellée après la création de votre objet
   public function postInsert() {
-
-  }
-
-  // preSave ⇒ Méthode appellée avant la sauvegarde (creation et mise à jour donc) de votre objet
-  public function preSave() {
-
-  }
-  */
-
-  // postSave ⇒ Méthode appellée après la sauvegarde de votre objet
   // ici on va créer les 2 commandes
-  public function postSave() {
 
     $notification = $this->getCmd(null, 'notification');
 
@@ -105,7 +94,19 @@ class AutoRemote extends eqLogic {
 		$message->setEqLogic_id($this->getId());
 		$message->save();
 
-    }
+  }
+
+  /*
+  // preSave ⇒ Méthode appellée avant la sauvegarde (creation et mise à jour donc) de votre objet
+  public function preSave() {
+
+  }
+  */
+
+  // postSave ⇒ Méthode appellée après la sauvegarde de votre objet
+  public function postSave() {
+
+  }
 
   // preUpdate ⇒ Méthode appellée avant la mise à jour de votre objet
   // ici on vérifie la présence de nos champs de config obligatoire
