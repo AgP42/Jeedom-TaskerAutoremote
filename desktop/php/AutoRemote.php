@@ -101,12 +101,36 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
 							</div>
 						</div>
+          </fieldset>
+        </form>
+        <br>
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Clés API des équipements récepteurs</legend>
 						<div class="form-group">
-							<label class="col-sm-3 control-label">{{Clé AutoRemote}}</label>
+							<label class="col-sm-3 control-label">{{Récepteur 1}}</label>
 							<div class="col-sm-3">
 								<input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="key" placeholder="{{Clé api d'AutoRemote}}" />
 							</div>
+              <div class="col-sm-3">{{<strong>Obligatoire</strong>}}</div>
 						</div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Récepteur 2}}</label>
+              <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="key2" placeholder="{{Clé api d'AutoRemote}}" />
+              </div>
+              <div class="col-sm-3">{{<em>Optionnel</em>}}</div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">{{Récepteur 3}}</label>
+              <div class="col-sm-3">
+                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="key3" placeholder="{{Clé api d'AutoRemote}}" />
+              </div>
+              <div class="col-sm-3">{{<em>Optionnel</em>}}</div>
+            </div>
+
 					</fieldset>
 				</form>
 			</div>
