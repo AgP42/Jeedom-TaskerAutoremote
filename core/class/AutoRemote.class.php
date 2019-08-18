@@ -113,7 +113,7 @@ class AutoRemote extends eqLogic {
   public function preUpdate() {
 
       if ($this->getConfiguration('key') == '') {
-          throw new Exception(__('Le champs clé ne peut être vide',__FILE__));
+          throw new Exception(__('Le champs clé du récepteur 1 ne peut être vide',__FILE__));
       }
 
   }
@@ -180,6 +180,8 @@ class AutoRemoteCmd extends cmd {
         $cmd_logical = $this->getLogicalId();
 
         $key = $autoremote->getConfiguration('key');
+        $key2 = $autoremote->getConfiguration('key2');
+        $key3 = $autoremote->getConfiguration('key3');
 
         // config option des messages
         $target = $autoremote->getConfiguration('target');
@@ -201,23 +203,42 @@ class AutoRemoteCmd extends cmd {
         // $message = str_replace("%27", "'", $message);
         // $message = str_replace("%22", "", $message);
 
-
         if( $cmd_logical == 'message'){
 
-          // message ne peut pas etre vide, exception autoremote. (pas de probleme pour notification)
+          // message ne peut pas etre vide, sinon exception autoremote. (pas de probleme pour notification)
           if ($message == '') {
             $message = "-";
           }
-          // https://autoremotejoaomgcd.appspot.com/sendmessage?key=6aw
-          // &message=msg&target=target&sender=sender&password=topsecret&ttl=15&collapseKey=groupe
 
           // dans l'url, si le meme tag est 2 fois, seul le premier est pris en compte, donc ce qui est dans message écrasera son homologue suivant
           $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
-          log::add('AutoRemote','debug',print_r('Envoi du message : '. '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey ,true));
+          log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 1: '. $url ,true));
           // log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
           $ch = curl_init($url);
           curl_exec($ch);
           curl_close($ch);
+
+          // si un second recepteur est configuré (oui je sais c'est moche de redonder son code...)
+          if ($key2 != '') {
+
+              $url2 = AUTOREMOTEADDRMSG . '?key=' . trim($key2) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+              log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 2: '. $url2 ,true));
+
+              $ch2 = curl_init($url2);
+              curl_exec($ch2);
+              curl_close($ch2);
+          }
+
+          // si un troisieme recepteur est configuré (no comment...)
+          if ($key3 != '') {
+
+              $url3 = AUTOREMOTEADDRMSG . '?key=' . trim($key3) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+              log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 3: '. $url3 ,true));
+
+              $ch3 = curl_init($url3);
+              curl_exec($ch3);
+              curl_close($ch3);
+          }
 
         }else{
 
@@ -227,9 +248,45 @@ class AutoRemoteCmd extends cmd {
 
             $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message . '&sound=' . $sound . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&statusbaricon=' . $status_bar_icon;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
+
             $ch = curl_init($url);
             curl_exec($ch);
             curl_close($ch);
+
+            // si un second recepteur est configuré (oui oui oui, c'est de pire en pire par ici...)
+            if ($key2 != '') {
+
+             // TODODODODODODODODDODODODO
+             // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+
+              $url2 = AUTOREMOTEADDRNOTIF . '?key=' . trim($key2) .  '&title=' . $title . '&text=' . $message . '&sound=' . $sound . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&statusbaricon=' . $status_bar_icon;
+              log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
+
+              $ch2 = curl_init($url2);
+              curl_exec($ch2);
+              curl_close($ch2);
+            }
+
+            // si un troisieme recepteur est configuré (no comment...)
+            if ($key3 != '') {
+
+             // TODODODODODODODODDODODODO
+             // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+              // TODODODODODODODODDODODODO
+
+              $url3 = AUTOREMOTEADDRNOTIF . '?key=' . trim($key2) .  '&title=' . $title . '&text=' . $message . '&sound=' . $sound . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&statusbaricon=' . $status_bar_icon;
+              log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
+
+              $ch3 = curl_init($url3);
+              curl_exec($ch3);
+              curl_close($ch3);
+
+            }
 
         }
     }
