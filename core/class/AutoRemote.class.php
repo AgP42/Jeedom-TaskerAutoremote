@@ -180,8 +180,14 @@ class AutoRemoteCmd extends cmd {
 
         $key = $autoremote->getConfiguration('key');
 
+        // config option des messages
         $target = $autoremote->getConfiguration('target');
+        $sender = $autoremote->getConfiguration('sender');
+        $password = $autoremote->getConfiguration('password');
+        $ttl = $autoremote->getConfiguration('ttl');
+        $collapseKey = $autoremote->getConfiguration('collapseKey');
 
+        // config option des notifications
         $sound = $autoremote->getConfiguration('sound');
         $status_bar_icon = $autoremote->getConfiguration('status_bar_icon');
         $url_on_tap = $autoremote->getConfiguration('url_on_tap');
@@ -194,16 +200,23 @@ class AutoRemoteCmd extends cmd {
         // $message = str_replace("%27", "'", $message);
         // $message = str_replace("%22", "", $message);
 
+
         if( $cmd_logical == 'message'){
 
-          // https://autoremotejoaomgcd.appspot.com/sendmessage?key=cSMUySg&message=message&target=target&sender=sender&password=lkll&ttl=15&collapseKey=mshgroupe
+          // message ne peut pas etre vide, exception autoremote. (pas de probleme pour notification)
+          if ($message == '') {
+            $message = "-";
+          }
+          // https://autoremotejoaomgcd.appspot.com/sendmessage?key=6aw
+          // &message=msg&target=target&sender=sender&password=topsecret&ttl=15&collapseKey=groupe
 
-            // $url ='https://autoremotejoaomgcd.appspot.com/sendmessage?key=' . trim($key) .  '&message=' . $message;
-            $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target;
-            log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
-            $ch = curl_init($url);
-            curl_exec($ch);
-            curl_close($ch);
+          // dans l'url, si le meme tag est 2 fois, seul le premier est pris en compte, donc ce qui est dans message écrasera son homologue suivant
+          $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+          log::add('AutoRemote','debug',print_r('Envoi du message : '. '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey ,true));
+          // log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
+          $ch = curl_init($url);
+          curl_exec($ch);
+          curl_close($ch);
 
         }else{
 

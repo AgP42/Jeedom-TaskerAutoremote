@@ -128,22 +128,55 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
       <div role="tabpanel" class="tab-pane" id="msgoptiontab">
         </br>
-        <p>{{Tous les paramétres ci-dessous sont optionnels}}</p>
+        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour la commande <strong>Envoyer un message</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. Voir la documentation pour un exemple.}}</p>
         <form class="form-horizontal">
-          <legend>Option</legend>
+          <legend>Options</legend>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Cible (optionnel)}}</label>
+            <label class="col-sm-3 control-label">{{Cible}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="target" />
             </div>
-            <span class="descpapp">{{Permet au receveur de filtrer les messages selon la cible sans avoir besoin d'analyser le message en lui-même.}}</span>
+            <div class="col-sm-3">{{Permet au receveur de filtrer les messages selon la cible sans avoir besoin d'analyser le message en lui-même. Ce champ ne défini pas le destinataire du message (défini par l'API key)}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&target=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Emetteur}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="sender" />
+            </div>
+            <div class="col-sm-3">{{Permet de déclarer l'origine du message}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&sender=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Mot de passe}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" />
+            </div>
+            <div class="col-sm-3">{{Permet d'utiliser le mot de passe définis dans l'appli android. Attention, il est envoyé en clair dans la requête http.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&password=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Durée de validité (en s)}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="ttl" />
+            </div>
+            <div class="col-sm-3">{{Durée en secondes avant que le message soit considéré obsolète. Au bout de cette durée, si le message n'a pas été remis il est abandonné. Par défaut : 0 = illimité}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&ttl=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Groupe de message}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="collapseKey" />
+            </div>
+            <div class="col-sm-3">{{Si le destinataire n'est pas joignable pendant une certaine durée, seul le dernier message appartenant à ce "groupe" sera transmis à la reconnexion du destinataire.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&collapseKey=</strong>}}</div>
           </div>
         </form>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="notifoptiontab">
         </br>
-        <p>{{Tous les paramétres ci-dessous sont optionnels}}</p>
+        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour la commande <strong>Envoyer une notification</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. Voir la documentation pour un exemple.}}</p>
 
         <form class="form-horizontal">
           <legend>Apparence</legend>
@@ -152,14 +185,17 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="sound" />
             </div>
-            <span class="descpapp">{{Valeur de 1 à 10. Correspond à l'un des 10 sons de notification choisis dans l'application Android.}}</span>
+            <div class="col-sm-3">{{Valeur de 1 à 10. Correspond à l'un des 10 sons de notification choisis dans l'application Android.}}
+            </div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&sound=</strong>}}</div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Icone de la notification}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="status_bar_icon" />
             </div>
-            <span class="descpapp">{{Status Bar Icon - Dans l'application Tasker (Android), allez dans l'action "AutoRemote Notification et cliquez sur le champ "Status Bar Icon". Vous y trouverez les valeurs possibles pour cette zone. Ex: "eye" ou "edit"}}</span>
+            <div class="col-sm-3">{{Status Bar Icon - Dans l'application Tasker (Android), allez dans l'action "AutoRemote Notification et cliquez sur le champ "Status Bar Icon". Vous y trouverez les valeurs possibles pour cette zone. Ex: "eye" ou "edit"}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&statusbaricon=</strong>}}</div>
           </div>
           <legend>Action après un clic</legend>
           <p>{{Choisir l'un ou l'autre, "Action" sera prioritaire}}</p>
@@ -168,14 +204,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
             </div>
-            <span class="descpapp">{{URL à ouvrir au clique sur la notification. Ce champ n'est pas pris en compte si "Action" si-dessous est rempli. Ne pas oublier le "http://"}}</span>
+            <div class="col-sm-3">{{URL à ouvrir au clique sur la notification. Ce champ n'est pas pris en compte si "Action" si-dessous est rempli. Ne pas oublier le "http://"}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&url=</strong>}}</div>
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Action après un clic}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
             </div>
-            <span class="descpapp">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple complet.}}</span>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple complet.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action=</strong>}}</div>
           </div>
           <legend>Action à la reception</legend>
           <div class="form-group">
@@ -183,7 +221,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_receive" />
             </div>
-            <span class="descpapp">{{Action AutoRemote (nécessite Tasker) à executer dès la reception de la notification. Voir la documentation pour un exemple complet.}}</span>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer dès la reception de la notification. Voir la documentation pour un exemple complet.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&message=</strong>}}</div>
           </div>
         </form>
       </div>
