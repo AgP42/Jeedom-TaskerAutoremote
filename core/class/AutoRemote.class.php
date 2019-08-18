@@ -189,12 +189,14 @@ class AutoRemoteCmd extends cmd {
         $action_on_receive = $autoremote->getConfiguration('action_on_receive');
 
         $message = rawurlencode($_options['message']);
-        // $message = str_replace("%26", "&", $message);
-        // $message = str_replace("%3D", "=", $message);
+        $message = str_replace("%26", "&", $message);
+        $message = str_replace("%3D", "=", $message);
         // $message = str_replace("%27", "'", $message);
         // $message = str_replace("%22", "", $message);
 
         if( $cmd_logical == 'message'){
+
+          // https://autoremotejoaomgcd.appspot.com/sendmessage?key=cSMUySg&message=message&target=target&sender=sender&password=lkll&ttl=15&collapseKey=mshgroupe
 
             // $url ='https://autoremotejoaomgcd.appspot.com/sendmessage?key=' . trim($key) .  '&message=' . $message;
             $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target;
@@ -206,8 +208,8 @@ class AutoRemoteCmd extends cmd {
         }else{
 
             $title = rawurlencode($_options['title']);
-            // $title = str_replace("%26", "&", $title);
-            // $title = str_replace("%3D", "=", $title);
+            $title = str_replace("%26", "&", $title);
+            $title = str_replace("%3D", "=", $title);
 
             $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message . '&sound=' . $sound . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&statusbaricon=' . $status_bar_icon;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
