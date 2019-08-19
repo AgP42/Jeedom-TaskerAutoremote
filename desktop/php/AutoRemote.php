@@ -53,7 +53,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
 			<li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
-      <li role="presentation"><a href="#msgoptiontab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-envelope"></i> {{Options des messages}}</a></li>
+      <li role="presentation"><a href="#msgoptiontab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-envelope"></i> {{Options}}</a></li>
       <li role="presentation"><a href="#notifoptiontab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-comment"></i> {{Options des notifications}}</a></li>
 		</ul>
 
@@ -152,11 +152,12 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
       <div role="tabpanel" class="tab-pane" id="msgoptiontab">
         </br>
-        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour la commande <strong>Envoyer un message</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. Voir la documentation pour un exemple.}}</p>
+        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour <strong>Envoyer un message</strong> et <strong>Envoyer une notification</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. <br>
+        Voir la documentation pour un exemple.}}</p>
         <form class="form-horizontal">
           <legend>Options</legend>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Cible}}</label>
+            <label class="col-sm-3 control-label">{{Cible (messages seulement)}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="target" />
             </div>
@@ -176,7 +177,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" />
             </div>
-            <div class="col-sm-3">{{Permet d'utiliser le mot de passe définis dans l'appli android. Attention, il est envoyé en clair dans la requête http.}}</div>
+            <div class="col-sm-3">{{Permet d'utiliser le mot de passe définis dans l'appli android. Attention, il est envoyé en clair dans la requête http et visible dans les logs.}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&password=</strong>}}</div>
           </div>
           <div class="form-group">
@@ -221,32 +222,38 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">{{Status Bar Icon - Dans l'application Tasker (Android), allez dans l'action "AutoRemote Notification et cliquez sur le champ "Status Bar Icon". Vous y trouverez les valeurs possibles pour cette zone. Ex: "eye" ou "edit"}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&statusbaricon=</strong>}}</div>
           </div>
-          <legend>Action après un clic</legend>
-          <p>{{Choisir l'un ou l'autre, "Action" sera prioritaire}}</p>
+          <legend>Actions</legend>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{URL après un clic}}</label>
+            <label class="col-sm-3 control-label">{{URL au clic}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
             </div>
-            <div class="col-sm-3">{{URL à ouvrir au clique sur la notification. Ce champ n'est pas pris en compte si "Action" si-dessous est rempli. Ne pas oublier le "http://"}}</div>
+            <div class="col-sm-3">{{URL à ouvrir au clique sur la notification. Ce champ n'est pas pris en compte si "Action au clic" si-dessous est rempli. Ne pas oublier le "http://"}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&url=</strong>}}</div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label">{{Action après un clic}}</label>
+            <label class="col-sm-3 control-label">{{Action au clic}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
             </div>
-            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple complet.}}</div>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple.}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action=</strong>}}</div>
           </div>
-          <legend>Action à la reception</legend>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Action à la réception}}</label>
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_receive" />
             </div>
-            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer dès la reception de la notification. Voir la documentation pour un exemple complet.}}</div>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer dès la reception de la notification.}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&message=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action à la suppression}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_dismiss" />
+            </div>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer lors de la suppression de la notification.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&actionondismiss=</strong>}}</div>
           </div>
         </form>
       </div>
