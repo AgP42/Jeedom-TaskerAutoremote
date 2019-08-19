@@ -200,6 +200,8 @@ class AutoRemoteCmd extends cmd {
         $action_on_receive = $autoremote->getConfiguration('action_on_receive');
         $action_on_dismiss = $autoremote->getConfiguration('action_on_dismiss');
 
+        $other = $autoremote->getConfiguration('other');
+
         $message = rawurlencode($_options['message']);
         $message = str_replace("%26", "&", $message);
         $message = str_replace("%3D", "=", $message);
@@ -249,7 +251,7 @@ class AutoRemoteCmd extends cmd {
             $title = str_replace("%26", "&", $title);
             $title = str_replace("%3D", "=", $title);
 
-            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message
+            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message . $other
               . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss
               . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
