@@ -288,7 +288,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action1name" />
             </div>
             <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple.}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action1name=</strong>}}</div>
@@ -296,7 +296,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Action associée}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action1" />
             </div>
             <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur ce bouton."}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action1=</strong>}}</div>
@@ -305,7 +305,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action2name" />
             </div>
             <div class="col-sm-3">{{}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action2name=</strong>}}</div>
@@ -313,7 +313,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Action associée}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action2" />
             </div>
             <div class="col-sm-3">{{}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action2=</strong>}}</div>
@@ -322,7 +322,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action3name" />
             </div>
             <div class="col-sm-3">{{}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action3name=</strong>}}</div>
@@ -330,7 +330,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Action associée}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action3" />
             </div>
             <div class="col-sm-3">{{}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&action3=</strong>}}</div>

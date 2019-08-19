@@ -207,7 +207,12 @@ class AutoRemoteCmd extends cmd {
         $priority = $autoremote->getConfiguration('priority');
         $notif_id = $autoremote->getConfiguration('notif_id');
 
-
+        $action1name = $autoremote->getConfiguration('action1name');
+        $action1 = $autoremote->getConfiguration('action1');
+        $action2name = $autoremote->getConfiguration('action2name');
+        $action2 = $autoremote->getConfiguration('action2');
+        $action3name = $autoremote->getConfiguration('action3name');
+        $action3 = $autoremote->getConfiguration('action3');
 
         $other = $autoremote->getConfiguration('other');
 
@@ -264,7 +269,8 @@ class AutoRemoteCmd extends cmd {
               . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon . '&icon=' . $icon .'&picture=' . $picture
               . '&id=' . $notif_id . '&priority=' . $priority
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss
-              . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+              . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey
+              . '&action1=' . $action1 . '&action1name=' . $action1name . '&action2=' . $action2 . '&action2name=' . $action2name . '&action3=' . $action3 . '&action3name=' . $action3name;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
 
             $ch = curl_init($url);
