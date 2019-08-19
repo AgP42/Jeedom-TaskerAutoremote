@@ -283,6 +283,59 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">{{Ce champ correspond à <strong>&actionondismiss=</strong>}}</div>
           </div>
 
+          <legend>Boutons actions</legend>
+          <p>Bouton N°1 :</p>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+            </div>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur la notification. Voir la documentation pour un exemple.}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action1name=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action associée}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+            </div>
+            <div class="col-sm-3">{{Action AutoRemote (nécessite Tasker) à executer au clique sur ce bouton."}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action1=</strong>}}</div>
+          </div>
+          <p>Bouton N°2 :</p>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+            </div>
+            <div class="col-sm-3">{{}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action2name=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action associée}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+            </div>
+            <div class="col-sm-3">{{}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action2=</strong>}}</div>
+          </div>
+          <p>Bouton N°3 :</p>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Nom du bouton}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="action_on_tap" />
+            </div>
+            <div class="col-sm-3">{{}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action3name=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Action associée}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="url_on_tap" />
+            </div>
+            <div class="col-sm-3">{{}}</div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&action3=</strong>}}</div>
+          </div>
+
           <legend>Configuration</legend>
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Priorité}}</label>
