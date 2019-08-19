@@ -201,7 +201,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
       <div role="tabpanel" class="tab-pane" id="notifoptiontab">
         </br>
-        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour la commande <strong>Envoyer une notification</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. Voir la documentation pour un exemple.}}</p>
+        <p>{{Tous les paramètres ci-dessous sont optionnels, si définis ils seront les valeurs par défaut pour la commande <strong>Envoyer une notification</strong>. </br></br> Pour <em>écraser</em> ces valeurs par défaut pour une commande spécifique, utiliser la notation donnée dans "Ce champ correspond à" dans le message de la commande. <br> Voir la documentation pour un exemple.}}</p>
 
         <form class="form-horizontal">
 
@@ -239,6 +239,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">{{URL d'une image qui sera affichée en déployant la notification, par exemple l'image d'une camera}}</div>
             <div class="col-sm-3">{{Ce champ correspond à <strong>&picture=</strong>}}</div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Sous-texte}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="subtext" />
+            </div>
+            <div class="col-sm-3">{{Ligne de texte supplémentaire qui s'affiche dans le titre une fois la notification dépliée}}
+            </div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&subtext=</strong>}}</div>
+          </div>
 
           <legend>Actions</legend>
           <div class="form-group">
@@ -274,6 +283,26 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">{{Ce champ correspond à <strong>&actionondismiss=</strong>}}</div>
           </div>
 
+          <legend>Configuration</legend>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{Priorité}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="priority" />
+            </div>
+            <div class="col-sm-3">{{Values ranging from -2 (min priority) to 2 (max priority)}}
+            </div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&priority=</strong>}}</div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">{{ID de la notification}}</label>
+            <div class="col-sm-3">
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="id" />
+            </div>
+            <div class="col-sm-3">{{Notifications with different ids will not overlap eachother}}
+            </div>
+            <div class="col-sm-3">{{Ce champ correspond à <strong>&id=</strong>}}</div>
+          </div>
+
           <legend>Autres</legend>
 <!--             <div>
               <p>
@@ -285,7 +314,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <div class="col-sm-3">
               <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="other" />
             </div>
-            <div class="col-sm-3">{{Utiliser ce champ pour écrire le code brut des options AutoRemote à utiliser pour toutes les notifications}}</div>
+            <div class="col-sm-3">{{Utiliser ce champ pour écrire du code brut des options AutoRemote à utiliser pour toutes les notifications}}</div>
             <div class="col-sm-3">{{par exemple "&dismissontouch=o&led=green"}}</div>
           </div>
 

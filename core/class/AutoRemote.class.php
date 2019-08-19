@@ -69,12 +69,13 @@ class AutoRemote extends eqLogic {
 
     if (!is_object($notification)) {
 			$notification = new AutoRemoteCmd();
-			$notification->setLogicalId('notification');
-			$notification->setIsVisible(1);
-			$notification->setName(__('Envoyer notification', __FILE__));
 		}
+		$notification->setLogicalId('notification');
+		$notification->setIsVisible(1);
+		$notification->setName(__('Envoyer notification', __FILE__));
 		$notification->setType('action');
 		$notification->setSubType('message');
+    // $notification->setDisplay('message_placeholder', __('Texte', __FILE__));
 		$notification->setEventOnly(1);
 		$notification->setEqLogic_id($this->getId());
 		$notification->save();
@@ -82,10 +83,10 @@ class AutoRemote extends eqLogic {
     $message = $this->getCmd(null, 'message');
 		if (!is_object($message)) {
 			$message = new AutoRemoteCmd();
-			$message->setLogicalId('message');
-			$message->setIsVisible(1);
-			$message->setName(__('Envoyer message', __FILE__));
 		}
+		$message->setLogicalId('message');
+		$message->setIsVisible(1);
+		$message->setName(__('Envoyer message', __FILE__));
 		$message->setType('action');
 		$message->setSubType('message');
     $message->setDisplay('title_disable', 1);
@@ -195,10 +196,15 @@ class AutoRemoteCmd extends cmd {
         // config option des notifications
         $sound = $autoremote->getConfiguration('sound');
         $status_bar_icon = $autoremote->getConfiguration('status_bar_icon');
+        $icon = $autoremote->getConfiguration('icon');
+        $picture = $autoremote->getConfiguration('picture');
+        $subtext = $autoremote->getConfiguration('subtext');
         $url_on_tap = $autoremote->getConfiguration('url_on_tap');
         $action_on_tap = $autoremote->getConfiguration('action_on_tap');
         $action_on_receive = $autoremote->getConfiguration('action_on_receive');
         $action_on_dismiss = $autoremote->getConfiguration('action_on_dismiss');
+
+
 
         $other = $autoremote->getConfiguration('other');
 
@@ -251,8 +257,8 @@ class AutoRemoteCmd extends cmd {
             $title = str_replace("%26", "&", $title);
             $title = str_replace("%3D", "=", $title);
 
-            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) .  '&title=' . $title . '&text=' . $message . $other
-              . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon
+            $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . $other . '&title=' . $title . '&text=' . $message . '&subtext=' . $subtext
+              . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon . '&icon=' . $icon .'&picture=' . $picture
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss
               . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
