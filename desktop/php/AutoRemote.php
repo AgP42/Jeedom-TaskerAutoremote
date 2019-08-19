@@ -296,7 +296,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
           <div class="form-group">
             <label class="col-sm-3 control-label">{{ID de la notification}}</label>
             <div class="col-sm-3">
-              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="id" />
+              <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="notif_id" />
             </div>
             <div class="col-sm-3">{{Notifications with different ids will not overlap eachother}}
             </div>

@@ -204,6 +204,9 @@ class AutoRemoteCmd extends cmd {
         $action_on_receive = $autoremote->getConfiguration('action_on_receive');
         $action_on_dismiss = $autoremote->getConfiguration('action_on_dismiss');
 
+        $priority = $autoremote->getConfiguration('priority');
+        $notif_id = $autoremote->getConfiguration('notif_id');
+
 
 
         $other = $autoremote->getConfiguration('other');
@@ -259,6 +262,7 @@ class AutoRemoteCmd extends cmd {
 
             $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . $other . '&title=' . $title . '&text=' . $message . '&subtext=' . $subtext
               . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon . '&icon=' . $icon .'&picture=' . $picture
+              . '&id=' . $notif_id . '&priority=' . $priority
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss
               . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
             log::add('AutoRemote','debug',print_r('Envoi de la notification : '.$_options['title'],true));
