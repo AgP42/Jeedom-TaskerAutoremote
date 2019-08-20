@@ -53,6 +53,21 @@ class AutoRemote extends eqLogic {
     }
    */
 
+    public function buildMessageUrl($key, $message) {
+
+      // config options messages
+      $target = $this->getConfiguration('target');
+
+      // config option messages ET notifications
+      $sender = $this->getConfiguration('sender');
+      $password = $this->getConfiguration('password');
+      $ttl = $this->getConfiguration('ttl');
+      $collapseKey = $this->getConfiguration('collapseKey');
+
+      return $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+
+    }
+
   /*     * *********************Méthodes d'instance************************* */
 
   /*
@@ -185,7 +200,7 @@ class AutoRemoteCmd extends cmd {
         $key3 = $autoremote->getConfiguration('key3');
 
         // config options messages
-        $target = $autoremote->getConfiguration('target');
+        // $target = $autoremote->getConfiguration('target');
 
         // config option messages ET notifications
         $sender = $autoremote->getConfiguration('sender');
@@ -230,8 +245,11 @@ class AutoRemoteCmd extends cmd {
           }
 
           // dans l'url, si le meme tag est 2 fois, seul le premier est pris en compte, donc ce qui est dans message écrasera son homologue suivant
-          $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+          // $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+          $url = $autoremote->buildMessageUrl($key, $message);
+
           log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 1: '. $url ,true));
+
           // log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
           $ch = curl_init($url);
           curl_exec($ch);
@@ -240,7 +258,8 @@ class AutoRemoteCmd extends cmd {
           // si un second recepteur est configuré (oui je sais c'est moche de redonder son code...)
           if ($key2 != '') {
 
-              $url2 = AUTOREMOTEADDRMSG . '?key=' . trim($key2) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+              // $url2 = AUTOREMOTEADDRMSG . '?key=' . trim($key2) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+            $url2 = $autoremote->buildMessageUrl($key2, $message);
               log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 2: '. $url2 ,true));
 
               $ch2 = curl_init($url2);
@@ -251,7 +270,9 @@ class AutoRemoteCmd extends cmd {
           // si un troisieme recepteur est configuré (no comment...)
           if ($key3 != '') {
 
-              $url3 = AUTOREMOTEADDRMSG . '?key=' . trim($key3) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+              // $url3 = AUTOREMOTEADDRMSG . '?key=' . trim($key3) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+            $url3 = $autoremote->buildMessageUrl($key3, $message);
+
               log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 3: '. $url3 ,true));
 
               $ch3 = curl_init($url3);
