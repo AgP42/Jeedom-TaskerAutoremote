@@ -68,6 +68,28 @@ class AutoRemote extends eqLogic {
 
     }
 
+    public function sendUrl($url) {
+
+      log::add('AutoRemote','debug',print_r('Url à envoyer: '. $url ,true));
+
+      // create curl resource
+      $ch = curl_init();
+
+      // set url
+      curl_setopt($ch, CURLOPT_URL, $url);
+
+      //return the transfer as a string
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+      // $output contains the output string
+      $output = curl_exec($ch);
+      log::add('AutoRemote','debug',print_r('Réponse execution: '. $output ,true));
+
+      // close curl resource to free up system resources
+      curl_close($ch);
+
+    }
+
   /*     * *********************Méthodes d'instance************************* */
 
   /*
@@ -244,40 +266,27 @@ class AutoRemoteCmd extends cmd {
             $message = "-";
           }
 
-          // dans l'url, si le meme tag est 2 fois, seul le premier est pris en compte, donc ce qui est dans message écrasera son homologue suivant
-          // $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+          log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 1 : '.$_options['message'],true));
+
           $url = $autoremote->buildMessageUrl($key, $message);
+          $autoremote->sendUrl($url);
 
-          log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 1: '. $url ,true));
-
-          // log::add('AutoRemote','debug',print_r('Envoi du message : '.$_options['message'],true));
-          $ch = curl_init($url);
-          curl_exec($ch);
-          curl_close($ch);
-
-          // si un second recepteur est configuré (oui je sais c'est moche de redonder son code...)
+          // si un second recepteur est configuré
           if ($key2 != '') {
 
-              // $url2 = AUTOREMOTEADDRMSG . '?key=' . trim($key2) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
-            $url2 = $autoremote->buildMessageUrl($key2, $message);
-              log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 2: '. $url2 ,true));
+            log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 2 : '.$_options['message'],true));
 
-              $ch2 = curl_init($url2);
-              curl_exec($ch2);
-              curl_close($ch2);
+            $url = $autoremote->buildMessageUrl($key2, $message);
+            $autoremote->sendUrl($url);
           }
 
-          // si un troisieme recepteur est configuré (no comment...)
+          // si un troisieme recepteur est configuré
           if ($key3 != '') {
 
-              // $url3 = AUTOREMOTEADDRMSG . '?key=' . trim($key3) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
-            $url3 = $autoremote->buildMessageUrl($key3, $message);
+            log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 3 : '.$_options['message'],true));
 
-              log::add('AutoRemote','debug',print_r('Envoi du message au récepteur 3: '. $url3 ,true));
-
-              $ch3 = curl_init($url3);
-              curl_exec($ch3);
-              curl_close($ch3);
+            $url = $autoremote->buildMessageUrl($key3, $message);
+            $autoremote->sendUrl($url);
           }
 
         }else{
