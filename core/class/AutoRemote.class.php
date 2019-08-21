@@ -125,6 +125,10 @@ class AutoRemote extends eqLogic {
       $output = curl_exec($ch);
       log::add('AutoRemote','debug',print_r('Réponse execution: '. $output ,true));
 
+      if ($output != 'OK') { // si le retour est pas ok, on log une erreur, ce qui va aussi generer un message
+        log::add('AutoRemote','error',print_r('Erreur execution: '. $output ,true));
+      }
+
       // close curl resource to free up system resources
       curl_close($ch);
 
