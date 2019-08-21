@@ -109,6 +109,8 @@ class AutoRemote extends eqLogic {
     }
 
     public function sendUrl($url) {
+      // s'il y a des problèmes d'executions avec plusieurs recepteurs, voir pour charger le code avec curl-multi-exec
+      // https://www.php.net/manual/fr/function.curl-multi-exec.php
 
       log::add('AutoRemote','debug',print_r('Url à envoyer: '. $url ,true));
 
