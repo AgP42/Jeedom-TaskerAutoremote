@@ -79,6 +79,9 @@ Onglet Options des notifications
 Il s'agit des options pour la commande "Envoyer une notification" uniquement.
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif.png)
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_action.png)
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_btn.png)
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_config&autre.png)
 
 Apparence :
 - Son de notification : Choisir entre 1 et 10. Permet de choisir un des 10 son définis au niveau de l'application AutoRemote
