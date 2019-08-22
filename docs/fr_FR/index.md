@@ -1,11 +1,25 @@
-Présentation
-============
+Présentation et principe de fonctionnement
+==========================================
 
 Ce plugin vous permet de communiquer avec votre téléphone Android (ou autre équipement compatible) via le service AutoRemote.
 
-Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des actions sur votre équipement distant (grâce à Tasker) ou vous pourrez directement envoyer une notification complètement personnalisée.
+Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des actions sur votre équipement distant, grâce à Tasker,  ou vous pourrez directement envoyer une notification complètement personnalisée incluant des boutons d'actions.
 
-Pour plus d'information à propos d'AutoRemote : http://joaoapps.com/autoremote/what-it-is/
+Pour plus d'information à propos d'AutoRemote : http://joaoapps.com/autoremote/what-it-is/, et de Tasker : https://tasker.joaoapps.com/
+
+
+Le principe de fonctionnement du plugin est le suivant : 
+
+- Chaque client contient les commandes "Envoyer un message" et "Envoyer une notification" avec des options spécifiques. 
+- Chaque client peut adresser ces messages à jusqu'à 3 destinataires pour chaque commande.
+- Les options peuvent être considerées comme des "valeurs par défaut", permettant de ne pas devoir les redéfinir à chaque fois qu'on utilise la commande (message ou notification) de ce client. 
+- A chaque utilisation d'une commande, il est possible "d'écraser" les valeurs par défaut en utilisant la synthaxe d'AutoRemote directement dans le champ "message" (voir exemple ci-dessous)
+- Il est évidemment possible de définir une multitude de clients, chacun pouvant utiliser la même clef API pour envoyer des messages aux mêmes destinaires, mais avec des options pré-définies différentes.
+
+Dans l'exemple ci-dessous, la seconde notification envoyé utilisera le son n°2, quelque soit le son par défaut défini dans les options du client "S7" :
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/exemple_overwrite.png)
+
+Dans les messages et dans les notifications, il est possible de définir des actions à "écouter" par Tasker pour générer des actions en retour, par exemple effacer les messages du centre de messages Jeedom.
 
 Configuration du plugin
 ========================
@@ -19,9 +33,10 @@ Une fois le plugin activé, il est visible dans le menu "plugin"/"communication"
 
 Vous pouvez alors définir plusieurs "clients Autoremote".
 
-Chaque client doit avoir une clef API définie, permettant de cibler l'appareil de réception.
+Chaque client doit avoir au moins une clef API définie, permettant de cibler l'appareil de réception. Il est possible de définir jusqu'à 3 appareils de destination pour une même commande.
 
 Chaque client contient aussi ses options pour "Envoyer un message" ou "Envoyer une notification" qui sont propre à chacun.
+
 
 Onglet Equipement
 -----------------
@@ -46,25 +61,28 @@ Chaque équipement contient les 2 commandes suivantes :
 - Envoyer message
 - Envoyer notification
 
-Il est possible de tester ces commandes avec le bouton "tester", attention, le retour de Jeedom sur cette page sera "OK{"state":"ok","result":""}" en rouge, ce qui peut laisser croire à une erreur. Vérifier sur votre Android de réception si le message ou la notification a bien été reçu.
+Il est possible de les renommer ou de les supprimer. Une fois supprimées elles ne peuvent pas être recréées. 
 
-Onglet Options des messages
---------------------------
+Il est possible de tester ces commandes avec le bouton "tester", attention, le retour de Jeedom concerne l'appel de l'exécution de la commande qui sera donc (quasi) toujours un succès. En cas d'erreur dans l'execution de la requête elle-même, un message sera donné dans les logs et dans les messages de Jeedom : 
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/erreur_clef.png)
+
+
+Onglet Options
+--------------
+
+Il s'agit des options pour les 2 types de commandes, sauf pour le champ "cible".
+
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Opt_msg.png)
-
-Il s'agit des options pour la commande "Envoyer un message" uniquement.
-
-Le champ "cible" permet de définir le champ "Target" d'AutoRemote qui permet au receveur de filtrer les messages selon la cible sans avoir besoin d'analyser le message en lui-même.
 
 Onglet Options des notifications
 --------------------------------
-![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif.png)
-
 Il s'agit des options pour la commande "Envoyer une notification" uniquement.
+
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif.png)
 
 Apparence :
 - Son de notification : Choisir entre 1 et 10. Permet de choisir un des 10 son définis au niveau de l'application AutoRemote
-- Icone de la notification : Permet de choisir l'icône de notification qui sera affichée. Pour voir la liste des icônes disponibles et leur nom, aller dans Tasker, puis créer une tâche ayant en action "AutoRemote Notification", dans configuration, chercher le champ "Status Bar Icon". Par exemple :
+- Icone de la barre de notification : Permet de choisir l'icône de notification qui sera affichée. Pour voir la liste des icônes disponibles et leur nom, aller dans Tasker, puis créer une tâche ayant en action "AutoRemote Notification", dans configuration, chercher le champ "Status Bar Icon". Par exemple :
    - "action_about_dark" : affiche un i dans un cercle
    - "action_settings" : affiche 3 sliders
    - "edit" : crayon
