@@ -1,14 +1,14 @@
 # 2.0.0 - 08/2019
 
 - Reprise du plugin par AgP42
+- Changement du nom en "TaskerAutoRemote"
 - Mise à jour selon le nouveau format Jeedom 3.0
-- Ajout de l'option "target" pour les "messages"
-- Ajout des options suivantes pour les "notifications" :
-   - sound
-   - status bar icon
-   - url on tap
-   - action on tap
-   - action on reception
+- Ajout de toutes les options pour les messages
+- Ajout des beaucoup d'options pour les "notifications" !
+- Ajout de la possibilité d'avoir jusqu'à 3 clefs par client
+- Correction du bug lors du test de la commande
+- Ajout de log lors d'une erreur de transmission
+
 
 # 1.0.0 et précédentes
 

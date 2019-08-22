@@ -18,7 +18,7 @@ exclude:
 plugins:
 - jekyll-seo-tag
 title: "Documentation Jeedom"
-description: "Ceci est la documentation du plugin AutoRemote, liée à la solution domotique Jeedom."
+description: "Ceci est la documentation du plugin TaskerAutoRemote, liée à la solution domotique Jeedom."
 author: "AgP42"
 image: https://www.jeedom.com/site/logo.png
 twitter:

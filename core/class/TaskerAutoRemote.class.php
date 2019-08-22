@@ -24,7 +24,7 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 define('AUTOREMOTEADDRMSG', 'https://autoremotejoaomgcd.appspot.com/sendmessage');
 define('AUTOREMOTEADDRNOTIF', 'https://autoremotejoaomgcd.appspot.com/sendnotification');
 
-class AutoRemote extends eqLogic {
+class TaskerAutoRemote extends eqLogic {
   /*     * *************************Attributs****************************** */
 
 
@@ -112,7 +112,7 @@ class AutoRemote extends eqLogic {
       // s'il y a des problèmes d'executions avec plusieurs recepteurs, voir pour charger le code avec curl-multi-exec
       // https://www.php.net/manual/fr/function.curl-multi-exec.php
 
-      log::add('AutoRemote','debug',print_r('Url à envoyer: '. $url ,true));
+      log::add('TaskerAutoRemote','debug',print_r('Url à envoyer: '. $url ,true));
 
       // create curl resource
       $ch = curl_init();
@@ -125,10 +125,10 @@ class AutoRemote extends eqLogic {
 
       // $output contains the output string
       $output = curl_exec($ch);
-      log::add('AutoRemote','debug',print_r('Réponse execution: '. $output ,true));
+      log::add('TaskerAutoRemote','debug',print_r('Réponse execution: '. $output ,true));
 
       if ($output != 'OK') { // si le retour est pas ok, on log une erreur, ce qui va aussi generer un message
-        log::add('AutoRemote','error',print_r('Erreur execution: '. $output ,true));
+        log::add('TaskerAutoRemote','error',print_r('Erreur execution: '. $output ,true));
       }
 
       // close curl resource to free up system resources
@@ -151,7 +151,7 @@ class AutoRemote extends eqLogic {
     $notification = $this->getCmd(null, 'notification');
 
     if (!is_object($notification)) {
-			$notification = new AutoRemoteCmd();
+			$notification = new TaskerAutoRemoteCmd();
 		}
 		$notification->setLogicalId('notification');
 		$notification->setIsVisible(1);
@@ -165,7 +165,7 @@ class AutoRemote extends eqLogic {
 
     $message = $this->getCmd(null, 'message');
 		if (!is_object($message)) {
-			$message = new AutoRemoteCmd();
+			$message = new TaskerAutoRemoteCmd();
 		}
 		$message->setLogicalId('message');
 		$message->setIsVisible(1);
@@ -242,7 +242,7 @@ class AutoRemote extends eqLogic {
 
 }
 
-class AutoRemoteCmd extends cmd {
+class TaskerAutoRemoteCmd extends cmd {
     /*     * *************************Attributs****************************** */
 
 
@@ -278,7 +278,7 @@ class AutoRemoteCmd extends cmd {
             $message = "-";
           }
 
-          log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 1 : '.$_options['message'],true));
+          log::add('TaskerAutoRemote','debug',print_r('Envoi du message au recepteur 1 : '.$_options['message'],true));
 
           $url = $autoremote->buildMessageUrl($key, $message);
           $autoremote->sendUrl($url);
@@ -286,7 +286,7 @@ class AutoRemoteCmd extends cmd {
           // si un second recepteur est configuré
           if ($key2 != '') {
 
-            log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 2 : '.$_options['message'],true));
+            log::add('TaskerAutoRemote','debug',print_r('Envoi du message au recepteur 2 : '.$_options['message'],true));
 
             $url = $autoremote->buildMessageUrl($key2, $message);
             $autoremote->sendUrl($url);
@@ -295,7 +295,7 @@ class AutoRemoteCmd extends cmd {
           // si un troisieme recepteur est configuré
           if ($key3 != '') {
 
-            log::add('AutoRemote','debug',print_r('Envoi du message au recepteur 3 : '.$_options['message'],true));
+            log::add('TaskerAutoRemote','debug',print_r('Envoi du message au recepteur 3 : '.$_options['message'],true));
 
             $url = $autoremote->buildMessageUrl($key3, $message);
             $autoremote->sendUrl($url);
@@ -307,7 +307,7 @@ class AutoRemoteCmd extends cmd {
             $title = str_replace("%26", "&", $title);
             $title = str_replace("%3D", "=", $title);
 
-            log::add('AutoRemote','debug',print_r('Envoi de la notification au recepteur 1 : '. $_options['title']. ' - ' . $_options['message'] ,true));
+            log::add('TaskerAutoRemote','debug',print_r('Envoi de la notification au recepteur 1 : '. $_options['title']. ' - ' . $_options['message'] ,true));
 
             $url = $autoremote->buildNotificationUrl($key, $title, $message);
             $autoremote->sendUrl($url);
@@ -315,7 +315,7 @@ class AutoRemoteCmd extends cmd {
             // si un second recepteur est configuré
             if ($key2 != '') {
 
-            log::add('AutoRemote','debug',print_r('Envoi de la notification au recepteur 2 : '. $_options['title']. ' - ' . $_options['message'] ,true));
+            log::add('TaskerAutoRemote','debug',print_r('Envoi de la notification au recepteur 2 : '. $_options['title']. ' - ' . $_options['message'] ,true));
 
             $url = $autoremote->buildNotificationUrl($key2, $title, $message);
             $autoremote->sendUrl($url);
@@ -325,7 +325,7 @@ class AutoRemoteCmd extends cmd {
             // si un troisieme recepteur est configuré
             if ($key3 != '') {
 
-            log::add('AutoRemote','debug',print_r('Envoi de la notification au recepteur 3 : '. $_options['title']. ' - ' . $_options['message'] ,true));
+            log::add('TaskerAutoRemote','debug',print_r('Envoi de la notification au recepteur 3 : '. $_options['title']. ' - ' . $_options['message'] ,true));
 
             $url = $autoremote->buildNotificationUrl($key3, $title, $message);
             $autoremote->sendUrl($url);

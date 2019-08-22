@@ -8,6 +8,6 @@ Pour plus d’information à propos d’AutoRemote : http://joaoapps.com/autorem
 
 # Documentation du plugin:
 
-[Documentation](https://agp42.github.io/Jeedom-AutoRemote/fr_FR/)
+[Documentation](https://agp42.github.io/Jeedom-TaskerAutoRemote/fr_FR/)
 
-[Change log](https://agp42.github.io/Jeedom-AutoRemote/fr_FR/changelog)
+[Change log](https://agp42.github.io/Jeedom-TaskerAutoRemote/fr_FR/changelog)

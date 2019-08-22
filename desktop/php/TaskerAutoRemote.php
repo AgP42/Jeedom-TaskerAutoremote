@@ -3,7 +3,7 @@ if (!isConnect('admin')) {
     throw new Exception('{{401 - Accès non autorisé}}');
 }
 
-$plugin = plugin::byId('AutoRemote');
+$plugin = plugin::byId('TaskerAutoRemote');
 sendVarToJS('eqType', $plugin->getId());
 $eqLogics = eqLogic::byType($plugin->getId());
 ?>
@@ -357,11 +357,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
           </div>
 
           <legend>Autres</legend>
-<!--             <div>
-              <p>
-                Options offertes par AutoRemote et non détaillées ci-dessus : <br>
-              </p>
-            </div> -->
           <div class="form-group">
             <label class="col-sm-3 control-label">{{Autres paramètres par défaut}}</label>
             <div class="col-sm-3">
@@ -380,5 +375,5 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
 </div>
 
-<?php include_file('desktop', 'AutoRemote', 'js', 'AutoRemote'); ?>
+<?php include_file('desktop', 'TaskerAutoRemote', 'js', 'TaskerAutoRemote'); ?>
 <?php include_file('core', 'plugin.template', 'js'); ?>
