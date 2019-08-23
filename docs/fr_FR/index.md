@@ -20,6 +20,16 @@ Le principe de fonctionnement du plugin est le suivant :
 
 Dans les messages et dans les notifications, il est possible de définir des actions à "écouter" par Tasker pour générer des actions en retour, par exemple effacer les messages du centre de messages Jeedom.
 
+
+Installation du plugin via Github
+=================================
+
+1. Télécharger le zip contenant les sources sur github : <a href="https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip" target="_blank">https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip</a> 
+2. Il faut ensuite créer un dossier "TaskerAutoRemote" (les majuscules sont importantes) dans le dossier plugin de votre Jeedom, pour celà plusieurs possibilités : 
+   - En FTP ou SSH, le dossier plugin se trouve dans /var/www/html/plugins (sur un RPI en tout cas...)
+   - En utilisant le plugin "JeeXplorer" téléchargeable sur le market Jeedom, puis naviguer dans "plugin", créer le dossier et copier/coller les sources (dézippées)
+3. Dans Jeedom, aller dans "plugin"/"gestion des plugins", trouver TaskerAutoremote et activez le
+
 Configuration du plugin
 ========================
 
@@ -78,16 +88,24 @@ Onglet Options des notifications
 Il s'agit des options pour la commande "Envoyer une notification" uniquement.
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif.png)
+
+Exemple de rendu :
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_app.jpg)
+
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_action.png)
 
 Pour l'action Tasker, il s'agit en fait du champs "message" qui doit donc être "écouté" par Tasker pour lancer une action. Voir dans Tasker les événements "AutoRemote". (Voir exemple ci-dessous)
 
 Si l'URL et Action sont remplies, "Action" sera prioritaire.
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_btn.png)
+
+Il est possible d'ajouter jusqu'à 3 boutons d'actions dans le pied de la notification. Le champ "action associé" correspond à une action tasker, de même que les actions ci-dessus. 
+
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_config&autre.png)
 
 Exemples d'utilisation
 ======================
+
 Personaliser un champ pour une commande en particulier
 ------------------------------------------------------
 
