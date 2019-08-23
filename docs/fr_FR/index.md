@@ -7,8 +7,8 @@ Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des act
 
 Pour plus d'information à propos d'AutoRemote : <a href="http://joaoapps.com/autoremote/what-it-is/" target="_blank">AutoRemote</a>, et de Tasker : <a href="https://tasker.joaoapps.com/" target="_blank">Tasker</a>
 
-![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_1.png)
-![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_2.png)
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_1.jpg)
+![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_2.jpg)
 
 Le principe de fonctionnement du plugin est le suivant : 
 
