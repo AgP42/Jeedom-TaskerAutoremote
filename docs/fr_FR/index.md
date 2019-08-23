@@ -103,6 +103,25 @@ Il est possible d'ajouter jusqu'à 3 boutons d'actions dans le pied de la notifi
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_config&autre.png)
 
+Utilisez le champ "Autres" pour utiliser des options non détaillées ci-dessous. 
+Liste des options AutoRemote disponibles et non détaillées dans le plugin (copier/coller de la doc AutoRemote) : 
+
+- Dismiss On Touch - Fill any value to make the notification dismiss itself when touched - &dismissontouch=
+- Vibration Pattern - Similar to Tasker's Vibration Pattern - &vibration=
+- Led Color - Not supported on all devices. Supported formats are: #RRGGBB #AARRGGBB 'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray'. - &led=
+- Led On ms - Time in milliseconds the LED will be on during blinking - &ledon=
+- Led Off ms - Time in milliseconds the LED will be off during blinking - &ledoff=
+- Max Progress - Max value the progress can have - &maxprogress=
+- Current Progress - Value from 0 to the value you set in Max Progress - &progess=
+- Indeterminate Progress - If set, an indeterminate progress bar will be used - &indeterminateprogress=
+- Ticker Text - Text to appear on the status bar when the notification is first created. Defaults to the text field above. - &ticker=
+- Number - Number to appear on the lower right of the Notification - &number=
+- Content Info - Small string to appear on the lower right of the Notification; overrides Number - &contentinfo=
+- Share - Add Share button(s) on Jelly Bean Notifications. Input any value to show these buttons. Leave blank otherwise. - &share=
+- Action Button Icon 1 (and 2 and 3) - In the Android app, go to the AutoRemote Notification action in Tasker and click the Button 1 Icon field. There you can see the possible values for this field. - &action1icon=
+- Persistent - Fill in any value to make the notification persistent - &persistent=
+- Cancel - Fill any value to cancel notification with the given Id. Must fill Id to cancel; All other settings besides Id will be ignored - &cancel=
+
 Exemples d'utilisation
 ======================
 
