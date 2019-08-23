@@ -81,7 +81,9 @@ class TaskerAutoRemote extends eqLogic {
       $status_bar_icon = $this->getConfiguration('status_bar_icon');
       $icon = $this->getConfiguration('icon');
       $picture = $this->getConfiguration('picture');
-      $subtext = $this->getConfiguration('subtext');
+
+      $subtext = rawurlencode($this->getConfiguration('subtext')); // il est necessaire d'encoder ce champ car il peut y avoir des espaces ou des caractéres speciaux
+
       $url_on_tap = $this->getConfiguration('url_on_tap');
       $action_on_tap = $this->getConfiguration('action_on_tap');
       $action_on_receive = $this->getConfiguration('action_on_receive');
@@ -90,16 +92,19 @@ class TaskerAutoRemote extends eqLogic {
       $priority = $this->getConfiguration('priority');
       $notif_id = $this->getConfiguration('notif_id');
 
-      $action1name = $this->getConfiguration('action1name');
+      $action1name = rawurlencode($this->getConfiguration('action1name')); // à encoder car peut avoir des espaces ou des caractéres speciaux
       $action1 = $this->getConfiguration('action1');
-      $action2name = $this->getConfiguration('action2name');
+      $action2name = rawurlencode($this->getConfiguration('action2name')); // à encoder car peut avoir des espaces ou des caractéres speciaux
       $action2 = $this->getConfiguration('action2');
-      $action3name = $this->getConfiguration('action3name');
+      $action3name = rawurlencode($this->getConfiguration('action3name')); // à encoder car peut avoir des espaces ou des caractéres speciaux
       $action3 = $this->getConfiguration('action3');
 
-      $other = $this->getConfiguration('other');
+      $other = rawurlencode($this->getConfiguration('other')); // à encoder car peut avoir des espaces ou des caractéres speciaux
+      $other = str_replace("%26", "&", $other); // mais il faut sortir les & et = pour pouvoir les utiliser dans l'url
+      $other = str_replace("%3D", "=", $other);
 
-      return $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . $other . '&title=' . $title . '&text=' . $message . '&subtext=' . $subtext
+      // construction et retour de l'url selon l'api autoremote
+      return $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . '&text=' . $message . $other . '&title=' . $title . '&subtext=' . $subtext
               . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon . '&icon=' . $icon .'&picture=' . $picture
               . '&id=' . $notif_id . '&priority=' . $priority
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss
