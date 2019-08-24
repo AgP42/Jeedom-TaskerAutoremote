@@ -75,6 +75,7 @@ Il est possible de les renommer ou de les supprimer. Une fois supprimées elles 
 Il est possible de tester ces commandes avec le bouton "tester", attention, le retour de Jeedom concerne l'appel de l'exécution de la commande qui sera donc (quasi) toujours un succès. En cas d'erreur dans l'execution de la requête elle-même, un message sera donné dans les logs et dans les messages de Jeedom : 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/erreur_clef.png)
 
+Attention, il n'est jamais possible d'utliser le symbole "&".
 
 Onglet Options
 --------------
@@ -91,6 +92,8 @@ Il s'agit des options pour la commande "Envoyer une notification" uniquement.
 
 Exemple de rendu :
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_app.jpg)
+Vous trouverez par exemple une bonne collection d'icone pour la domotique ici : <a href="https://github.com/Harkanork/ZiHome/tree/master/www/img/icones" target="_blank">https://github.com/Harkanork/ZiHome/tree/master/www/img/icones</a>
+ Trouver l'icone voulue, faire "afficher l'image" puis utiliser l'url.
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_action.png)
 
