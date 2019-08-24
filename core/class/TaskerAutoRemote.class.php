@@ -275,6 +275,7 @@ class TaskerAutoRemoteCmd extends cmd {
         $message = rawurlencode($_options['message']);
         $message = str_replace("%26", "&", $message);
         $message = str_replace("%3D", "=", $message);
+        $message = str_replace("&apos", "'", $message); // va laisser un ; mais c'est le moins pire que j'ai trouvé... sinon ca tronque le msg !
 
         if( $cmd_logical == 'message'){
 
@@ -311,6 +312,8 @@ class TaskerAutoRemoteCmd extends cmd {
             $title = rawurlencode($_options['title']);
             $title = str_replace("%26", "&", $title);
             $title = str_replace("%3D", "=", $title);
+            $title = str_replace("&apos", "'", $title); // va laisser un ; mais c'est le moins pire que j'ai trouvé... sinon ca tronque le msg !
+
 
             log::add('TaskerAutoRemote','debug',print_r('Envoi de la notification au recepteur 1 : '. $_options['title']. ' - ' . $_options['message'] ,true));
 
