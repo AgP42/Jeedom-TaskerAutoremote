@@ -135,7 +135,7 @@ Dans l'exemple ci-dessous, la seconde notification envoyé utilisera le son n°2
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/exemple_overwrite.png)
 
 
-Actualiser un widget Android à chaque changement d'état sur Jeedom ("Envoyer un message")
+Actualiser un widget Android (Zooper ou KWGT) à chaque changement d'état sur Jeedom ("Envoyer un message")
 -------------------------------------------------------------------------------
 
 1. Configurer un client AutoRemote avec la clef API de l'équipement de destination (aucune autre option nécessaire)
@@ -143,8 +143,9 @@ Actualiser un widget Android à chaque changement d'état sur Jeedom ("Envoyer u
   - comme élément déclencheur le changement d'état que vous souhaitez recevoir
   - comme action la commande "Envoyer message" de votre client AutoRemote définie en 1.
 
-Puis suivre le tuto suivant que j'avais rédigé il y a plusieurs années mais reste applicable : http://www.touteladomotique.com/index.php?option=com_content&view=article&id=1841:tuto-faire-des-widgets-avec-retour-detat-jeedom-zooper
+Puis suivre le tuto suivant que j'avais rédigé il y a plusieurs années mais reste applicable : <a href="http://www.touteladomotique.com/index.php?option=com_content&view=article&id=1841:tuto-faire-des-widgets-avec-retour-detat-jeedom-zooper" target="_blank">Tuto widget sur Touteladomotique.com</a>
 (Zooper n'est plus disponible sur le Play Store mais son APK est facilement téléchargeable sur internet, testé ok sous Android 9)
+Ou celui là <a href="https://forum.joaoapps.com/index.php?resources/tutorial-display-dynamically-widgets-kwgt-or-zooper-according-to-autoremote-messages.395/" target="_blank">Tuto widget sur le forum Tasker</a> que j'ai rédigé beaucoup plus récemment et détaille l'application de widget KWGT, mais avec moins de détail sur la partie Jeedom (et en Anglais..).
 
 Recevoir une notification à chaque message Jeedom ("Envoyer une notification")
 -------------------------------------------------------------------------------
