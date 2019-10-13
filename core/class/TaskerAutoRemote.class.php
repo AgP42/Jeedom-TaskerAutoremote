@@ -21,8 +21,8 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-define('AUTOREMOTEADDRMSG', 'https://autoremotejoaomgcd.appspot.com/sendmessage');
-define('AUTOREMOTEADDRNOTIF', 'https://autoremotejoaomgcd.appspot.com/sendnotification');
+define('AUTOREMOTEADDRMSG', 'autoremotejoaomgcd.appspot.com/sendmessage');
+define('AUTOREMOTEADDRNOTIF', 'autoremotejoaomgcd.appspot.com/sendnotification');
 
 class TaskerAutoRemote extends eqLogic {
   /*     * *************************Attributs****************************** */
@@ -64,7 +64,14 @@ class TaskerAutoRemote extends eqLogic {
       $ttl = $this->getConfiguration('ttl');
       $collapseKey = $this->getConfiguration('collapseKey');
 
-      return $url = AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
+      // check if http or https
+      if ($this->getConfiguration('https', 0) == 1) {
+        $http_https = 'http://';
+      } else {
+        $http_https = 'https://';
+      }
+
+      return $url = $http_https . AUTOREMOTEADDRMSG . '?key=' . trim($key) . '&message=' . $message . '&target=' . $target . '&sender=' . $sender . '&password=' . $password . '&ttl=' .$ttl . '&collapseKey=' . $collapseKey;
 
     }
 
@@ -103,8 +110,15 @@ class TaskerAutoRemote extends eqLogic {
       $other = str_replace("%26", "&", $other); // mais il faut sortir les & et = pour pouvoir les utiliser dans l'url
       $other = str_replace("%3D", "=", $other);
 
+      // check if http or https
+      if ($this->getConfiguration('https', 0) == 1) {
+        $http_https = 'http://';
+      } else {
+        $http_https = 'https://';
+      }
+
       // construction et retour de l'url selon l'api autoremote
-      return $url = AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . '&text=' . $message . $other . '&title=' . $title . '&subtext=' . $subtext
+      return $url = $http_https . AUTOREMOTEADDRNOTIF . '?key=' . trim($key) . '&text=' . $message . $other . '&title=' . $title . '&subtext=' . $subtext
               . '&sound=' . $sound . '&statusbaricon=' . $status_bar_icon . '&icon=' . $icon .'&picture=' . $picture
               . '&id=' . $notif_id . '&priority=' . $priority
               . '&url=' . $url_on_tap . '&action=' . $action_on_tap . '&message=' . $action_on_receive . '&actionondismiss=' . $action_on_dismiss

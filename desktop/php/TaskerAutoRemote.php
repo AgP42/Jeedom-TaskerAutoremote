@@ -131,6 +131,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
               <div class="col-sm-3">{{<em>Optionnel</em>}}</div>
             </div>
 
+            <div class="form-group">
+                <label class="col-sm-3 control-label"></label>
+                <div class="col-sm-3">
+                 <label class="control-label"><input type="checkbox" class="eqLogicAttr" data-l1key='configuration' data-l2key='https' />{{Cocher pour envoyer en HTTP (non crypté)}}</label>
+                </div>
+            </div>
+
 					</fieldset>
 				</form>
 			</div>
