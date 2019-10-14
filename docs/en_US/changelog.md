@@ -1,3 +1,7 @@
+# 2.0.1 - 10/2019
+
+- ajout d'une option pour envoyer les messages en http et non uniquement en https
+
 # 2.0.0 - 08/2019
 
 - Reprise du plugin par AgP42
