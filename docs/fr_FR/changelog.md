@@ -1,3 +1,7 @@
+# 2.0.2 - 04/2020
+
+- changement icone au nouveau standart Jeedom
+
 # 2.0.1 - 10/2019
 
 - ajout d'une option pour envoyer les messages en http et non uniquement en https
