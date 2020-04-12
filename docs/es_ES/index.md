@@ -3,18 +3,18 @@ Présentation et principe de fonctionnement
 
 Ce plugin vous permet de communiquer avec votre téléphone Android (ou autre équipement compatible) via le service AutoRemote.
 
-Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des actions sur votre équipement distant, grâce à Tasker,  ou vous pourrez directement envoyer une notification complètement personnalisée incluant des boutons d'actions.
+Vous pourrez ainsi envoyer des messages et les utiliser pour déclencher des actions sur votre équipement distant, grâce à Tasker, ou vous pourrez directement envoyer une notification complètement personnalisée incluant des boutons d'actions.
 
 Pour plus d'information à propos d'AutoRemote : <a href="http://joaoapps.com/autoremote/what-it-is/" target="_blank">AutoRemote</a>, et de Tasker : <a href="https://tasker.joaoapps.com/" target="_blank">Tasker</a>
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_1.jpg)
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Notif_2.jpg)
 
-Le principe de fonctionnement du plugin est le suivant : 
+Le principe de fonctionnement du plugin est le suivant :
 
-- Chaque client contient les commandes "Envoyer un message" et "Envoyer une notification" avec des options spécifiques. 
+- Chaque client contient les commandes "Envoyer un message" et "Envoyer une notification" avec des options spécifiques.
 - Chaque client peut adresser ces messages à jusqu'à 3 destinataires pour chaque commande.
-- Les options peuvent être considerées comme des "valeurs par défaut", permettant de ne pas devoir les redéfinir à chaque fois qu'on utilise la commande (message ou notification) de ce client. 
+- Les options peuvent être considérées comme des "valeurs par défaut", permettant de ne pas devoir les redéfinir à chaque fois qu'on utilise la commande (message ou notification) de ce client.
 - A chaque utilisation d'une commande, il est possible "d'écraser" les valeurs par défaut en utilisant la synthaxe d'AutoRemote directement dans le champ "message" (voir les exemples à la fin)
 - Il est évidemment possible de définir une multitude de clients, chacun pouvant utiliser la même clef API pour envoyer des messages aux mêmes destinaires, mais avec des options pré-définies différentes.
 
@@ -24,8 +24,8 @@ Dans les messages et dans les notifications, il est possible de définir des act
 Installation du plugin via Github
 =================================
 
-1. Télécharger le zip contenant les sources sur github : <a href="https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip" target="_blank">https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip</a> 
-2. Il faut ensuite créer un dossier "TaskerAutoRemote" (les majuscules sont importantes) dans le dossier plugin de votre Jeedom, pour celà plusieurs possibilités : 
+1. Télécharger le zip contenant les sources sur github : <a href="https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip" target="_blank">https://github.com/AgP42/Jeedom-TaskerAutoremote/archive/master.zip</a>
+2. Il faut ensuite créer un dossier "TaskerAutoRemote" (les majuscules sont importantes) dans le dossier plugin de votre Jeedom, pour celà plusieurs possibilités :
    - En FTP ou SSH, le dossier plugin se trouve dans /var/www/html/plugins (sur un RPI en tout cas...)
    - En utilisant le plugin "JeeXplorer" téléchargeable sur le market Jeedom, puis naviguer dans "plugin", créer le dossier et copier/coller les sources (dézippées)
 3. Dans Jeedom, aller dans "plugin"/"gestion des plugins", trouver TaskerAutoremote et activez le
@@ -60,6 +60,8 @@ Par exemple vous pouvez définir un client vers votre téléphone avec les optio
 
 Vous pouvez aussi définir plusieurs clients selon le son ou l'icône voulue sur la notification.
 
+Par défault les messages sont envoyés cryptés (https), si ne recevez pas les messages ([ERROR] : Erreur execution: ), vous pouvez choisir de ne pas utiliser la liaison crypté en cochant la case "Cocher pour envoyer en HTTP (non crypté)", le message sera alors transmis en http non crypté.
+
 Onglet Commandes
 -----------------
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/Commandes.png)
@@ -70,9 +72,9 @@ Chaque équipement contient les 2 commandes suivantes :
 - Envoyer message
 - Envoyer notification
 
-Il est possible de les renommer ou de les supprimer. Une fois supprimées elles ne peuvent pas être recréées. 
+Il est possible de les renommer ou de les supprimer. Une fois supprimées elles ne peuvent pas être recréées.
 
-Il est possible de tester ces commandes avec le bouton "tester", attention, le retour de Jeedom concerne l'appel de l'exécution de la commande qui sera donc (quasi) toujours un succès. En cas d'erreur dans l'execution de la requête elle-même, un message sera donné dans les logs et dans les messages de Jeedom : 
+Il est possible de tester ces commandes avec le bouton "tester", attention, le retour de Jeedom concerne l'appel de l'exécution de la commande qui sera donc (quasi) toujours un succès. En cas d'erreur dans l'execution de la requête elle-même, un message sera donné dans les logs et dans les messages de Jeedom :
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/erreur_clef.png)
 
 Attention, il n'est jamais possible d'utliser le symbole "&".
@@ -102,12 +104,12 @@ Pour l'action Tasker, il s'agit en fait du champs "message" qui doit donc être 
 Si l'URL et Action sont remplies, "Action" sera prioritaire.
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_btn.png)
 
-Il est possible d'ajouter jusqu'à 3 boutons d'actions dans le pied de la notification. Le champ "action associé" correspond à une action tasker, de même que les actions ci-dessus. 
+Il est possible d'ajouter jusqu'à 3 boutons d'actions dans le pied de la notification. Le champ "action associé" correspond à une action tasker, de même que les actions ci-dessus.
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/opt_notif_config&autre.png)
 
-Utilisez le champ "Autres" pour utiliser des options non détaillées ci-dessous. 
-Liste des options AutoRemote disponibles et non détaillées dans le plugin (copier/coller de la doc AutoRemote) : 
+Utilisez le champ "Autres" pour utiliser des options non détaillées ci-dessous.
+Liste des options AutoRemote disponibles et non détaillées dans le plugin (copier/coller de la doc AutoRemote) :
 
 - Dismiss On Touch - Fill any value to make the notification dismiss itself when touched - &dismissontouch=
 - Vibration Pattern - Similar to Tasker's Vibration Pattern - &vibration=
@@ -162,7 +164,7 @@ Les messages Jeedom avertissement des erreurs d'exécution ou de mises à jour d
 
 ![](https://raw.githubusercontent.com/AgP42/Jeedom-AutoRemote/master/docs/assets/images/message_logs.png)
 
-Avec ceci vous recevrez une notification "standard" d'AutoRemote contenant uniquement le titre et le message. 
+Avec ceci vous recevrez une notification "standard" d'AutoRemote contenant uniquement le titre et le message.
 
 Personnalisons-la un peu ! :
 
@@ -190,3 +192,8 @@ Testons tout ça :
 - Cliquez sur la notification : vous devez voir un pop-up indiquant "Purge des messages Jeedom demandée" et sur Jeedom, les messages sont vides.
 
 Evidemment si vous purgez un message "redondant", il reviendra constamment...
+
+(bonus 2) Configurer Tasker pour réagir aux messages ou notifications reçues
+-------------------------------------------------------
+
+Voir ici : <a href="https://forum.joaoapps.com/index.php?resources/tutorial-receive-featured-notifications-from-your-home-automatisation-system.393/" target="_blank">Tutorial - Receive featured notifications from your home automatisation system </a>
