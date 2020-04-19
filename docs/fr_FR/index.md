@@ -197,3 +197,10 @@ Evidemment si vous purgez un message "redondant", il reviendra constamment...
 -------------------------------------------------------
 
 Voir ici : <a href="https://forum.joaoapps.com/index.php?resources/tutorial-receive-featured-notifications-from-your-home-automatisation-system.393/" target="_blank">Tutorial - Receive featured notifications from your home automatisation system </a>
+
+Support
+===
+
+* Pour toute demande de support ou d'information : [Forum Jeedom](https://community.jeedom.com/c/plugins/communication/49)
+* Pour un bug ou une demande d'évolution, merci de passer de préférence par [Github](https://github.com/AgP42/Jeedom-TaskerAutoremote/issues)
+

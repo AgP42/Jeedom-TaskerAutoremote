@@ -1,3 +1,7 @@
+# 2.0.3 - 04/2020
+
+- update liens Jeedom dans la doc
+
 # 2.0.2 - 04/2020
 
 - changement icone au nouveau standart Jeedom
